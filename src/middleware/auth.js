@@ -1,13 +1,9 @@
 const jwt = require('jsonwebtoken')
 
 const User = require('../models/user')
+const config = require('../config')
 
-if ( process.env.NODE_ENV === 'production') {
-  var secret = process.env.SECRET
-} else {
-  const config = require('../config.js')
-  var secret = config.secret
-}
+const secret = process.env.SECRET || config.secret
 
 const auth = function( req, res, next ) {
   try {
