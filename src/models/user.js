@@ -2,10 +2,12 @@ const mongoose = require('mongoose')
 const validator = require('validator')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
-if (process.env.NODE_ENV != 'production')
+if (process.env.NODE_ENV != 'production') {
   const config = require('../config')
-
-const secret = process.env.SECRET || config.secret
+  const secret = config.secret
+} else {
+  const secret = process.env.SECRET
+}
 
 const userSchema = new mongoose.Schema({
   name: {
