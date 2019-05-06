@@ -1,5 +1,6 @@
 const express = require('express')
 require('./db/mongoose')
+const cors = require('cors');
 
 const router = require('./routes')
 
@@ -9,6 +10,7 @@ const port = process.env.PORT || 3000
 
 app.use(express.json()) // parsea a json
 app.use(router)
+app.use(cors())
 
 
 app.listen(port, function() {
